@@ -135,4 +135,3 @@ async function apiPostItem(list, item) {
 
 }
 canBtn.click()
-canBtn.click()
