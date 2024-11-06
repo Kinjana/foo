@@ -1,0 +1,152 @@
+#addInput {
+  float:
+
+    right;
+}
+
+body {
+  background-color: #000;
+}
+
+
+.text-container {
+  box-sizing: border-box;
+  width: 100vw;
+  height: 100vh;
+  font-weight: bold;
+  font-size: 1.1rem;
+  font-family: inter, 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  position: relative;
+  overflow: visible;
+}
+
+.showingCant {
+  background-color: black;
+  color: #fff;
+  font-family: inter, sans-serif
+}
+
+
+.showingCan {
+  background-color: white;
+  color: #000;
+  font-family: inter, sans-serif
+}
+
+.text-container>div {
+  animation: come2life linear 10s infinite;
+  transform-origin: center center;
+  opacity: 0;
+  width: 250px;
+  height: 200px;
+  position: absolute;
+  overflow: visible;
+  backface-visibility: hidden;
+
+  /*Devices smaller than 767px*/
+
+  @media (max-width: 480px) {
+    font-size: .7rem;
+  }
+
+
+}
+
+
+@keyframes come2life {
+  0% {
+    transform: scale3d(0, 0, 1) rotate(-0.02deg);
+    opacity: 0;
+    filter: blur(10px);
+  }
+
+  25% {
+    transform: scale3d(1, 1, 1) rotate(0.02deg);
+    opacity: 1;
+    filter: blur(0px);
+  }
+
+  40% {
+    opacity: 1;
+    filter: blur(0px);
+  }
+
+  80% {
+    opacity: 0;
+  }
+
+  100% {
+    transform: scale3d(4, 4, 1) rotate(0.02deg);
+    filter: blur(10px);
+  }
+}
+
+
+.btn {
+  align-items: center;
+  appearance: none;
+  background-color: #fff;
+  border-radius: 24px;
+  border-style: none;
+  box-shadow: rgba(0, 0, 0, .2) 0 3px 5px -1px, rgba(0, 0, 0, .14) 0 6px 10px 0, rgba(0, 0, 0, .12) 0 1px 18px 0;
+  box-sizing: border-box;
+  color: #3c4043;
+  cursor: pointer;
+  display: inline-flex;
+  fill: currentcolor;
+  font-family: "Google Sans", Roboto, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  height: 24px;
+  justify-content: center;
+  letter-spacing: .25px;
+  line-height: normal;
+  max-width: 100%;
+  overflow: visible;
+  padding: 1px 24px;
+  position: relative;
+  text-align: center;
+  text-transform: none;
+  transition: box-shadow 280ms cubic-bezier(.4, 0, .2, 1), opacity 15ms linear 30ms, transform 270ms cubic-bezier(0, 0, .2, 1) 0ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: auto;
+  will-change: transform, opacity;
+  z-index: 0;
+}
+
+.btn:hover {
+  background: #F6F9FE;
+  color: #174ea6;
+}
+
+.btn:active {
+  box-shadow: 0 4px 4px 0 rgb(60 64 67 / 30%), 0 8px 12px 6px rgb(60 64 67 / 15%);
+  outline: none;
+}
+
+.btn:focus {
+  outline: none;
+  border: 2px solid #4285f4;
+}
+
+.btn:not(:disabled) {
+  box-shadow: rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px;
+}
+
+.btn:not(:disabled):hover {
+  box-shadow: rgba(60, 64, 67, .3) 0 2px 3px 0, rgba(60, 64, 67, .15) 0 6px 10px 4px;
+}
+
+.btn:not(:disabled):focus {
+  box-shadow: rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px;
+}
+
+.btn:not(:disabled):active {
+  box-shadow: rgba(60, 64, 67, .3) 0 4px 4px 0, rgba(60, 64, 67, .15) 0 8px 12px 6px;
+}
+
+.btn:disabled {
+  box-shadow: rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px;
+}
