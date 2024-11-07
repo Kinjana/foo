@@ -4,37 +4,38 @@ const tagLine = document.getElementById('tagline')
 const addInput = document.getElementById('addInput')
 const body = document.getElementById('body')
 const baseUrl = 'https://shatteredsnowman.com/'
-console.log('canList')
+
+
 // arrays for storing the lists 
 
 let cantList = []
 let canList = []
 
- function test() {
+// populate each of the two lists
 
-     fetch(`${baseUrl}canList`, {
-        method: 'GET'
-    }).then((response) => {
-        response.json().then((jsonResponse) => {
-            canList = jsonResponse
-        })
+fetch(`${baseUrl}canList`, {
+    method: 'GET'
+}).then((response) => {
+    response.json().then((jsonResponse) => {
+        canList = jsonResponse
     }).catch((err) => {
         console.log(`Error: ${err}`)
     })
+})
 
-
-     fetch(`${baseUrl}cantList`, {
-        method: 'GET'
-    }).then((response) => {
-        response.json().then((jsonResponse) => {
-            cantList = JSON.parse(jsonResponse)
-        })
-    }).catch((err) => {
-        console.log(`Error: ${err}`)
+fetch(`${baseUrl}cantList`, {
+    method: 'GET'
+}).then((response) => {
+    response.json().then((jsonResponse) => {
+        cantList = JSON.parse(jsonResponse)
+        start()
     })
+}).catch((err) => {
+    console.log(`Error: ${err}`)
+})
 
-}
-test()
+//event listener for the text input field
+
 addInput.addEventListener('keyup', ({ key }) => {
     if (key === 'Enter') {
         const inputVal = addInput.value
@@ -52,11 +53,12 @@ addInput.addEventListener('keyup', ({ key }) => {
         addstyle()
     }
 })
-// Add a click event listener to the button
+
+//  a click event listener for the button
 
 canBtn.addEventListener('click', () => {
     listBox.innerText = ''
-    listContainer = document.createElement('div')
+    let listContainer = document.createElement('div')
     listContainer.classList.add('text-container')
     listBox.append(listContainer)
 
@@ -87,14 +89,14 @@ canBtn.addEventListener('click', () => {
         })
         addstyle()
     }
+
 })
 
 // selects location and color for each list item to be animated
 function addstyle() {
     const randomIntegerInRange = (min, max) =>
         Math.floor(Math.random() * (max - min + 1)) + min
-    //const parentElement = document.getElementById('List')
-    // const listItems = parentElement.children
+ 
     const listItems = document.querySelectorAll('.text-container div')
     listItems.forEach((item, index) => {
         item.style.left = randomIntegerInRange(10, 75) + 'vw'
@@ -103,7 +105,7 @@ function addstyle() {
         item.style.color = '#' + Math.random().toString(16).slice(-6)
     })
 }
-//
+//send new list elements back to server
 async function apiPostItem(list, item) {
 
     fetch(`${baseUrl}append`, {
@@ -121,11 +123,13 @@ async function apiPostItem(list, item) {
         .catch(error => console.error('Error:', error))
 }
 
- document.onload = () => {
+function start() {
     listBox.innerText = ''
-    listContainer = document.createElement('div')
+    canBtn.innerText='CLICK ME'
+    let listContainer = document.createElement('div')
     listContainer.classList.add('text-container')
     listBox.append(listContainer)
+
     cantList.forEach(el => {
         const div = document.createElement('div')
         div.innerText = el
@@ -134,4 +138,4 @@ async function apiPostItem(list, item) {
     addstyle()
 
 }
-canBtn.click()
+//canBtn.click()
