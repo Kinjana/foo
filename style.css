@@ -118,7 +118,7 @@ body {
 
 .btn:hover {
   background: #F6F9FE;
-  color: #174ea6;
+  color: #161616;
 }
 
 .btn:active {
@@ -128,7 +128,7 @@ body {
 
 .btn:focus {
   outline: none;
-  border: 2px solid #4285f4;
+  border: 2px solid #8c8c8c;
 }
 
 .btn:not(:disabled) {

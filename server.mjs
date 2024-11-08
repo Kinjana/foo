@@ -15,11 +15,11 @@ const app = express()
 console.log(__dirname)
 app.use(cors())
 app.use(express.json())
-app.use(morgan('combined')); // Logs all requests
+app.use(morgan('combined')) // Logs all requests
 app.use(helmet())
 app.use(winston())
-app.use(express.static(path.join(__dirname)));
-app.use(express.static(path.join(__dirname)));
+
+app.use(express.static(path.join(__dirname)))  
 
 
 app.get('/', async (req, res) => {
