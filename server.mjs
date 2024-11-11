@@ -6,13 +6,11 @@ import path from 'path'
 import { fileURLToPath } from 'url'
 import morgan from 'morgan'
 import helmet from 'helmet'
-import winston from 'winston'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename);
 
 const app = express()
-console.log(__dirname)
 app.use(cors())
 app.use(express.json())
 app.use(morgan('combined')) // Logs all requests
