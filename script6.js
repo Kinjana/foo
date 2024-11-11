@@ -135,7 +135,7 @@ function start() {
         div.innerText = el
         document.querySelector('.text-container').appendChild(div)
     })
-    addstyle()
+    addstyle() 
 
 }
 //canBtn.click()

@@ -17,7 +17,7 @@ app.use(cors())
 app.use(express.json())
 app.use(morgan('combined')) // Logs all requests
 app.use(helmet())
-app.use(winston())
+
 
 app.use(express.static(path.join(__dirname)))  
 
@@ -77,5 +77,7 @@ async function readLines(filePath) {
     lines.push(line)
   }
   console.log(`lines[3]=${lines[3]}`)
+  fileStream.close()
+  rl.close()
   return lines
 }
