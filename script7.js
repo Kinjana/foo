@@ -8,33 +8,28 @@ const baseUrl = 'https://shatteredsnowman.com/'
 
 // arrays for storing the lists 
 
-let cantList = []
-let canList = []
+const canList = await fetchList('canList')
+let  cantList = await fetchList('cantList')
+cantList = JSON.parse(cantList)
+
 
 // populate each of the two lists
 
-fetch(`${baseUrl}canList`, {
-    method: 'GET'
-})
-.then((response) => {
-    response.json().then((jsonResponse) => {
-        canList = jsonResponse
-    }).catch((err) => {
-        console.log(`Error: ${err}`)
-    })
-})
 
-fetch(`${baseUrl}cantList`, {
-    method: 'GET'
-}).then((response) => {
-    response.json().then((jsonResponse) => {
-        cantList = JSON.parse(jsonResponse)
-        start()
-    })
-}).catch((err) => {
-    console.log(`Error: ${err}`)
-})
-
+start()
+async function fetchList( listId) {
+    try {
+      const response = await fetch(`${baseUrl}${listId}`);
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      const data = await response.json();
+      return Array.isArray(data) ? data : [data];
+    } catch (error) {
+      console.error('Error fetching data:', error);
+      return []; // Return an empty array on error
+    }
+  }
 //event listener for the text input field
 
 addInput.addEventListener('keyup', ({ key }) => {
@@ -114,10 +109,10 @@ async function apiPostItem(list, item) {
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({
+        body: {
             listId: list,
             line: item
-        })
+        }
     })
         .then(response => response.json())
         .then(data => console.log('Server response:', data))
